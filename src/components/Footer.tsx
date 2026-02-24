@@ -82,10 +82,13 @@ const Footer = () => {
   const practiceAreaLinks = [
     { label: "Corporate Law", path: "/practice-areas/corporate-law" },
     { label: "Criminal Law", path: "/practice-areas/criminal-law" },
-    { label: "Medical Law", path: "/practice-areas/medical-law" },
-    { label: "Environmental Law", path: "/practice-areas/environmental-law" },
-    { label: "Real Estate Law", path: "/practice-areas/real-estate-law" },
-    { label: "Civil Litigation", path: "/practice-areas/civil-litigation" }
+      { label: "Civil Law", path: "/practice-areas/civil-law" },
+      { label: "Family Law", path: "/practice-areas/family-law" },
+      { label: "Property Law", path: "/practice-areas/property-law" },
+      { label: "Arbitration", path: "/practice-areas/arbitration" },
+      { label: "Intellectual Property", path: "/practice-areas/intellectual-property" },
+      { label: "Tax Law", path: "/practice-areas/tax-law" },
+      { label: "Contract & Agreement Reviewing", path: "/practice-areas/contract-and-agreement-reviewing" },
   ];
 
   // Social media links

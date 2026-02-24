@@ -3,31 +3,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Scale, X } from "lucide-react";
 
 interface LegalDisclaimerModalProps {
+  isOpen: boolean;
   onAccept: () => void;
   onDecline: () => void;
 }
 
-const LegalDisclaimerModal = ({ onAccept, onDecline }: LegalDisclaimerModalProps) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    const hasAccepted = localStorage.getItem("legalDisclaimerAccepted");
-    if (!hasAccepted) {
-      setIsOpen(true);
-    }
-  }, []);
-
-  const handleAccept = () => {
-    localStorage.setItem("legalDisclaimerAccepted", "true");
-    setIsOpen(false);
-    onAccept();
-  };
-
-  const handleDecline = () => {
-    setIsOpen(false);
-    onDecline();
-  };
-
+const LegalDisclaimerModal = ({ isOpen, onAccept, onDecline }: LegalDisclaimerModalProps) => {
   const overlayVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { duration: 0.3 } },
@@ -54,6 +35,13 @@ const LegalDisclaimerModal = ({ onAccept, onDecline }: LegalDisclaimerModalProps
     }
   };
 
+  const handleOverlayClick = (e: React.MouseEvent) => {
+    // Only close if clicking the overlay itself, not the modal content
+    if (e.target === e.currentTarget) {
+      onDecline();
+    }
+  };
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -65,27 +53,27 @@ const LegalDisclaimerModal = ({ onAccept, onDecline }: LegalDisclaimerModalProps
             animate="visible"
             exit="exit"
             className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[9999]"
-            onClick={handleDecline}
+            onClick={handleOverlayClick}
           />
 
           {/* Center Wrapper */}
-          <div className="fixed inset-0 z-[10000] flex items-center justify-center px-4">
-
-            {/* Modal */}
+          <div className="fixed inset-0 z-[10000] flex items-center justify-center px-4 pointer-events-none">
+            {/* Modal - pointer-events-auto to enable clicks inside modal */}
             <motion.div
               variants={modalVariants}
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="w-full max-w-2xl max-h-[90vh] overflow-y-auto"
+              className="w-full max-w-2xl max-h-[90vh] overflow-y-auto pointer-events-auto"
             >
               <div className="bg-white rounded-xl shadow-2xl overflow-hidden border-t-4 border-[#C9A646]">
 
                 {/* Header */}
                 <div className="relative bg-gradient-to-r from-[#0F172A] to-[#1E293B] p-6 text-white">
                   <button
-                    onClick={handleDecline}
+                    onClick={onDecline}
                     className="absolute right-4 top-4 text-white/60 hover:text-white transition-colors"
+                    aria-label="Close"
                   >
                     <X className="w-5 h-5" />
                   </button>
@@ -132,8 +120,14 @@ const LegalDisclaimerModal = ({ onAccept, onDecline }: LegalDisclaimerModalProps
                     </p>
 
                     <ul className="mt-2 space-y-1 text-sm text-gray-600">
-                      <li>• does not amount to advertising or solicitation</li>
-                      <li>• is only for understanding about our services</li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-[#C9A646]">•</span>
+                        <span>does not amount to advertising or solicitation</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-[#C9A646]">•</span>
+                        <span>is only for understanding about our services</span>
+                      </li>
                     </ul>
                   </div>
 
@@ -142,7 +136,7 @@ const LegalDisclaimerModal = ({ onAccept, onDecline }: LegalDisclaimerModalProps
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      onClick={handleAccept}
+                      onClick={onAccept}
                       className="flex-1 px-6 py-3 bg-[#C9A646] text-white font-semibold rounded-lg hover:bg-[#0F172A] transition-all duration-500"
                     >
                       AGREE
@@ -151,7 +145,7 @@ const LegalDisclaimerModal = ({ onAccept, onDecline }: LegalDisclaimerModalProps
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      onClick={handleDecline}
+                      onClick={onDecline}
                       className="flex-1 px-6 py-3 bg-gray-200 text-gray-700 font-semibold rounded-lg hover:bg-gray-300 transition-all duration-500"
                     >
                       DECLINE
@@ -165,7 +159,6 @@ const LegalDisclaimerModal = ({ onAccept, onDecline }: LegalDisclaimerModalProps
                 </div>
               </div>
             </motion.div>
-
           </div>
         </>
       )}

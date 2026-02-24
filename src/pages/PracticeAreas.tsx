@@ -291,7 +291,7 @@ const sidebarPracticeAreas = [
 
 // Why Choose Us data
 const whyChooseUs = [
-  { icon: Scale, title: "30+ Years Experience", desc: "Decades of combined legal expertise across industries" },
+  { icon: Scale, title: "4+ Years Experience", desc: "Decades of combined legal expertise across industries" },
   { icon: Users, title: "Dedicated Team", desc: "Personal attention from senior partners on every case" },
   { icon: Award, title: "Award-Winning Service", desc: "Recognized by leading legal publications" },
   { icon: Briefcase, title: "Proven Results", desc: "Favorable outcomes for clients across practice areas" },
@@ -842,10 +842,10 @@ export const PracticeAreaDetail = () => {
                       Schedule Now
                     </Link>
                     <a 
-                      href="mailto:consult@lexington.law"
+                      href="mailto:jashishadvocate@gmail.com"
                       className="text-sm text-primary hover:text-accent transition-colors flex items-center justify-center gap-1"
                     >
-                      <Mail className="w-4 h-4" /> consult@lexington.law
+                      <Mail className="w-4 h-4" /> jashishadvocate@gmail.com
                     </a>
                   </div>
                 </motion.div>
@@ -1126,7 +1126,11 @@ export const PracticeAreaDetail = () => {
                     </div>
                     <div>
                       <p className="text-sm font-semibold text-foreground mb-1">Visit Us</p>
-                      <p className="text-sm text-muted-foreground">123 Legal Avenue, Suite 500<br />Chennai, CH 10001</p>
+                      <p className="text-sm text-muted-foreground">No. 137, Flat No. F-8, <br />
+1st Floor, Appu Manor Apartment, <br />
+Perambur Barracks Road, <br />
+Purasawalkam, Chennai 600 007.
+</p>
                     </div>
                   </div>
                   
@@ -1137,7 +1141,7 @@ export const PracticeAreaDetail = () => {
                     <div>
                       <p className="text-sm font-semibold text-foreground mb-1">Call Us</p>
                       <a href="tel:+12125550100" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                        +1 (212) 555-0100
+                        7373663555
                       </a>
                     </div>
                   </div>
@@ -1171,7 +1175,7 @@ export const PracticeAreaDetail = () => {
                 <ul className="space-y-3">
                   <li className="flex items-center gap-3">
                     <CheckCircle className="w-5 h-5 text-primary shrink-0" />
-                    <span className="text-sm text-muted-foreground">30+ years of combined experience</span>
+                    <span className="text-sm text-muted-foreground">4+ years of combined experience</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <CheckCircle className="w-5 h-5 text-primary shrink-0" />
@@ -1202,7 +1206,7 @@ export const PracticeAreaDetail = () => {
                     type="text"
                     required
                     className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
-                    placeholder="John Doe"
+                    placeholder="Your Name"
                   />
                 </div>
                 
@@ -1212,7 +1216,7 @@ export const PracticeAreaDetail = () => {
                     type="email"
                     required
                     className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
-                    placeholder="john@example.com"
+                    placeholder="Your Email"
                   />
                 </div>
                 
@@ -1221,7 +1225,7 @@ export const PracticeAreaDetail = () => {
                   <input
                     type="tel"
                     className="w-full px-4 py-3 bg-secondary border border-border rounded-lg text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
-                    placeholder="+1 (212) 555-0100"
+                    placeholder="Your Phone Number"
                   />
                 </div>
                 
