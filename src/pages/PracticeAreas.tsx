@@ -666,9 +666,8 @@ export const PracticeAreas = () => {
   );
 };
 
-export const PracticeAreaDetail = () => {
-  const params = useParams();
-  const slug = params.slug;
+// Update the PracticeAreaDetail component to accept slug as a prop
+export const PracticeAreaDetail = ({ slug }: { slug: string }) => {
   const [currentCase, setCurrentCase] = useState(0);
   const [selectedArea, setSelectedArea] = useState(slug || "corporate-law");
   
